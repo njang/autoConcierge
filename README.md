@@ -8,19 +8,19 @@ Does your car need an oil change, regular maintenance or inspection, but have a 
 ![](docs/003-person.png)
 # User persona & User stories
 
-1. Jason Chen is an assistant director of the international faculty's office of Texas A&M University. The maintenance reminder sticker on his windshield tells him it's past his recommended service date, and would really like to get it done as soon as possible. He can't find time to go to a auto shop, because his work schedule has very busy lately and doesn't seem to be letting off any time soon. As the car owner, Jason would like to
+1. Jason Chen is an assistant director of the international faculty's office of Texas A&M University. The maintenance reminder sticker on his windshield tells him it's past his recommended service date, and would really like to get it done as soon as possible. He can't find time to go to a auto shop, because his work schedule has very busy lately and doesn't seem to be letting off any time soon. As the car owner, Jason would like to:
 
-  - make profile including year/make/model of his car. 
+  - make profile including all the pertinent information of his car, such as year/make/model, license plate number, and odometer reading.
   - make service request, including type of service and desired date.
   - be able to connect with the driver who will retrieve the key for his car on the day of service from the place of his work
 
-2. Dominique Toretto is an independent auto service shop owner in Bryan, Tx. He prides in the exceptional quality of service he provides for the customers who bring their cars to his shop. He would love to increase his business presence and be able to satisfy more customers by servicing their cars right. As the shop owner Dominique would like to
+2. Dominique Toretto is an independent auto service shop owner in Bryan,TX. He prides in the exceptional quality of service he provides for the customers who bring their cars to his shop. He would love to increase his business presence and be able to satisfy more customers by servicing their cars right. As the shop owner Dominique would like to:
 
   - see the list of service requests, sorted by car year/make/model, and service types
   - accept service requests made by car owners
+  - mark the status of car as checked-in once it arrives to his shop
 
-
-3. Jennifer Simpson is a sophomore student at Texas A&M University majoring in political science. Growing up with 3 younger siblings, she has always demonstrated resonsibility and loved helping others. She's renting an apartment with 2 of her friends, and would like to earn some extra allowance for the rent and groceries. 
+3. Jennifer Simpson is a sophomore student at Texas A&M University majoring in political science. Growing up with 3 younger siblings, she has always demonstrated responsibility and loved helping others. She's renting an apartment with 2 of her friends, and would like to earn some extra allowance for the rent and groceries.
 
 ![](docs/006-cogwheel.png)
 # Entry Relationship Diagram
@@ -37,7 +37,10 @@ See the job board showing all arranged services including date/time of service, 
 
 # Wireframes
 
+# Technology used
 
+- Google Maps API - used to show on the map (a) the participating service shops, (b) display the location of the parked car upon pick up and return.
+- NHTSA Vehicle API - used to as selectable choices when user adds their vehicle to the profiles
 
 # References
 Icon made by ([Freepik](https://www.flaticon.com/authors/freepik)) from www.flaticon.com - Automotiles pack ([link](https://www.flaticon.com/packs/automobiles))
