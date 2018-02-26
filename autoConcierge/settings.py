@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'main_app',
-    'users',
+    # 'users',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +60,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,7 +87,8 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'users.CustomUser'
+# AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'main_app.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -136,7 +138,6 @@ STATICFILES_DIRS = [
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Extend & customize the User Model: Templates/Views/URLs
-# 'DIRS': [os.path.join(BASE_DIR, 'templates')],
+# # Extend & customize the User Model: Templates/Views/URLs
 # LOGIN_REDIRECT_URL = 'home'
 # LOGOUT_REDIRECT_URL = 'home'
