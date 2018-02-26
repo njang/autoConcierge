@@ -137,6 +137,6 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Extend & customize the User Model: Templates/Views/URLs
-'DIRS': [os.path.join(BASE_DIR, 'templates')],
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+# 'DIRS': [os.path.join(BASE_DIR, 'templates')],
+# LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'home'
