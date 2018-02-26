@@ -21,7 +21,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "axwe!t(+xtgth=^#1731f!a9w9)0=3ajvi$w8y-ooy=^7oz11-"
+SECRET_KEY = "39rd5r+ooui$a09eyg--&_8$pbour5#ea(g35(h6=be6#8m001"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'main_app',
-    # 'users',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +58,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
-        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,9 +83,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-# AUTH_USER_MODEL = 'users.CustomUser'
-AUTH_USER_MODEL = 'main_app.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -137,7 +131,3 @@ STATICFILES_DIRS = [
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# # Extend & customize the User Model: Templates/Views/URLs
-# LOGIN_REDIRECT_URL = 'home'
-# LOGOUT_REDIRECT_URL = 'home'
