@@ -37,12 +37,7 @@ Does your car need an oil change, regular maintenance or inspection, but have a 
 ![](docs/006-cogwheel.png)
 # Entry Relationship Diagram
 
-## User group 1: car owners
-
-## User group 2: auto shop owners
-
-
-## User group 3: service drivers
+![](docs/erd.png)
 
 # Wireframes
 
