@@ -37,9 +37,11 @@ Does your car need an oil change, regular maintenance or inspection, but have a 
 ![](docs/006-cogwheel.png)
 # Entry Relationship Diagram
 
-![](docs/erd.png)
 
+![](docs/erd.png)
 # Wireframes
+
+![](docs/wireframe-01.png)
 
 # Technology used
 
