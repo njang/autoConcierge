@@ -1,10 +1,13 @@
 from django.contrib import admin
-
-# Register your models here.
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
+from .models import User, CarOwner, ShopOwner, ServiceDriver
 
-from .models import User
+# Register your models here.
+
+admin.site.register(CarOwner)
+admin.site.register(ShopOwner)
+admin.site.register(ServiceDriver)
 
 @admin.register(User)
 class UserAdmin(DjangoUserAdmin):

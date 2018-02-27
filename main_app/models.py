@@ -43,8 +43,32 @@ class User(AbstractUser):
 
     username = None
     email = models.EmailField(_('email address'), unique=True)
-
+    name_first = models.CharField(max_length=50)
+    name_last = models.CharField(max_length=50)
+    is_car_owner = models.BooleanField(default=False)
+    is_shop_owner = models.BooleanField(default=False)
+    is_service_driver = models.BooleanField(default=False)
+    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     objects = UserManager()
+
+class CarOwner(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    loc_office = models.CharField(max_length=100)
+    loc_parking = models.CharField(max_length=100)
+    car_year = models.IntegerField(default=2010)
+    car_make = models.CharField(max_length=100)
+    car_model = models.CharField(max_length=100)
+    car_color = models.CharField(max_length=100)
+
+class ShopOwner(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    address_street = models.CharField(max_length=100)
+    address_gps_lat = models.DecimalField(max_digits=10, decimal_places=6)
+    address_gps_lng = models.DecimalField(max_digits=10, decimal_places=6)
+
+class ServiceDriver(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    is_over_21 = models.BooleanField(default=False)
