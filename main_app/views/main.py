@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from main_app.models import CarOwner
-from main_app.forms import CarOwnerSignUpForm
+from main_app.models import CarOwner, ServiceDriver
+# from main_app.forms import CarOwnerSignUpForm
 
 # Create your views here.
 def index(request):
@@ -25,6 +25,10 @@ def signup_service_driver(request):
 def profile_car_owner(request, user_id):
     user = CarOwner.objects.get(user=user_id)
     return render(request, 'profile/car_owner.html', {'user': user})
+
+def profile_service_driver(request, user_id):
+    user = ServiceDriver.objects.get(user=user_id)
+    return render(request, 'profile/service_driver.html', {'user': user})
 
 def error_404(request):
     data = {}

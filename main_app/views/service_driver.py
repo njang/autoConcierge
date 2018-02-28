@@ -15,5 +15,5 @@ class SignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        path = '/' + str(user.id) + '/car-owner-profile/'
+        path = '/' + str(user.id) + '/service-driver-profile/'
         return redirect(path)

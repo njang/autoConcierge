@@ -92,8 +92,8 @@ class ShopOwnerSignUpForm(UserCreationForm):
         # shop_owner.address_street = result['formatted_address']
         # shop_owner.address_gps_lat = result['geometry']['location']['lat']
         # shop_owner.address_gps_lng = result['geometry']['location']['lng']
-        shop_owner.address_gps_lat = 0
-        shop_owner.address_gps_lng = 0
+        shop_owner.address_gps_lat = 0.000000
+        shop_owner.address_gps_lng = 0.000000
         shop_owner.save()
         return user
 
