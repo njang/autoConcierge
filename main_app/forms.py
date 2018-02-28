@@ -4,6 +4,11 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from django.views.generic.edit import UpdateView
 from .models import User, CarOwner, ShopOwner, ServiceDriver
 
+from django.http import HttpResponseRedirect
+import requests
+
+GOOGLE_MAPS_API_URL = 'http://maps.googleapis.com/maps/api/geocode/json'
+
 class LoginForm(forms.Form):
     email = forms.CharField(label="Email", max_length=254)
     password = forms.CharField(widget=forms.PasswordInput())
@@ -53,3 +58,85 @@ class CarOwnerSignUpForm(UserCreationForm):
         car_owner.save()
         return user
 
+class ShopOwnerSignUpForm(UserCreationForm):
+    shop_name = forms.CharField(max_length=100)
+    address_street = forms.CharField(max_length=100)
+    address_gps_lat = forms.DecimalField(max_digits=10, decimal_places=6)
+    address_gps_lng = forms.DecimalField(max_digits=10, decimal_places=6)
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+
+    @transaction.atomic
+    def save(self):
+        user = super().save(commit=False)
+        user.is_shop_owner = True
+        user.save()
+        shop_owner = ShopOwner.objects.create(user=user)
+        # shop_owner.shop_name = self.cleaned_data.get('shop_name')        
+
+        # # Prepare for Google Maps geocode API
+        # params = {
+        #     'address': self.cleaned_data.get('address_street'),
+        #     'sensor': 'false',
+        #     'region': 'us'
+        # }
+
+        # # Make the request and get the response data
+        # req = requests.get(GOOGLE_MAPS_API_URL, params=params)
+        # res = req.json()
+
+        # # Use the first result
+        # result = res['results'][0]
+
+        # shop_owner.address_street = result['formatted_address']
+        # shop_owner.address_gps_lat = result['geometry']['location']['lat']
+        # shop_owner.address_gps_lng = result['geometry']['location']['lng']
+        shop_owner.address_gps_lat = 0
+        shop_owner.address_gps_lng = 0
+        shop_owner.save()
+        return user
+
+def update_address(request):
+    form = AddressForm(request.POST)
+    if form.is_valid():
+        address = form.save(commit = False)
+        # Prepare for Google Maps geocode API
+        params = {
+            'address': address.street,
+            'sensor': 'false',
+            'region': 'us'
+        }
+
+        # Make the request and get the response data
+        req = requests.get(GOOGLE_MAPS_API_URL, params=params)
+        res = req.json()
+
+        # Use the first result
+        result = res['results'][0]
+
+        # Save the result into the address database
+        address.user = request.user
+        address.street = result['formatted_address']
+        address.gps_lat = result['geometry']['location']['lat']
+        address.gps_lng = result['geometry']['location']['lng']
+        address.save()
+    return_to = '/'
+    return HttpResponseRedirect('/maps')
+
+class ServiceDriverSignUpForm(UserCreationForm):
+    is_over_21 = forms.BooleanField(label='is_over_21')
+    is_gpa_over3 = forms.BooleanField(label='is_gpa_over3')
+    class Meta(UserCreationForm.Meta):
+        model = User
+
+    @transaction.atomic
+    def save(self):
+        user = super().save(commit=False)
+        user.is_service_driver = True
+        user.save()
+        service_driver = ServiceDriver.objects.create(user=user)
+        service_driver.is_over_21 = self.cleaned_data.get('is_over_21')
+        service_driver.is_gpa_over3 = self.cleaned_data.get('is_gpa_over3')
+        service_driver.save()
+        return user

@@ -1,6 +1,3 @@
-from django.db import models
-
-# Create your models here.
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -78,6 +75,6 @@ class ShopOwner(models.Model):
 class ServiceDriver(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     is_over_21 = models.BooleanField(default=False)
-    is_gpa_good = models.BooleanField(default=False)
+    is_gpa_over3 = models.BooleanField(default=False)
     def __str__(self):
         return self.user.first_name

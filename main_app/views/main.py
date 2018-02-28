@@ -16,6 +16,12 @@ def signup(request):
 def signup_car_owner(request):
 	return render(request, 'registration/car_owner.html')
 
+def signup_shop_owner(request):
+    return render(request, 'registration/shop_owner.html')
+
+def signup_service_driver(request):
+    return render(request, 'registration/service_driver.html')
+
 def profile_car_owner(request, user_id):
     user = CarOwner.objects.get(user=user_id)
     return render(request, 'profile/car_owner.html', {'user': user})
