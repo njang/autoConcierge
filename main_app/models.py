@@ -39,8 +39,6 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 class User(AbstractUser):
-    """User model."""
-
     username = None
     email = models.EmailField(_('email address'), unique=True)
     name_first = models.CharField(max_length=50)
@@ -57,18 +55,25 @@ class User(AbstractUser):
 class CarOwner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     loc_office = models.CharField(max_length=100)
-    loc_parking = models.CharField(max_length=100)
+
+class Car(models.Model):
+    owner_id = models.ForeignKey(CarOwner, models.SET_NULL, blank=True, null=True)
     car_year = models.IntegerField(default=2010)
     car_make = models.CharField(max_length=100)
     car_model = models.CharField(max_length=100)
     car_color = models.CharField(max_length=100)
-
+    loc_parking = models.CharField(max_length=100)
+    
 class ShopOwner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    shop_name = models.CharField(max_length=100)
     address_street = models.CharField(max_length=100)
     address_gps_lat = models.DecimalField(max_digits=10, decimal_places=6)
     address_gps_lng = models.DecimalField(max_digits=10, decimal_places=6)
+    def __str__(self):
+        return self.shop_name
 
 class ServiceDriver(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     is_over_21 = models.BooleanField(default=False)
+    is_gpa_good = models.BooleanField(default=False)
