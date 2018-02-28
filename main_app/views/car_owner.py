@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import CreateView, ListView, UpdateView
-from .forms import CarOwnerSignUpForm
-from .models import User, CarOwner
+from main_app.forms import CarOwnerSignUpForm
+from main_app.models import User, CarOwner
 from django.contrib.auth import login
 
 class CarOwnerSignUpView(CreateView):

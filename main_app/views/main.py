@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from .models import CarOwner
-from .forms import CarOwnerSignUpForm
+from main_app.models import CarOwner
+from main_app.forms import CarOwnerSignUpForm
 
 # Create your views here.
 def index(request):

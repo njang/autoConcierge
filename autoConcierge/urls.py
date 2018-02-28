@@ -18,15 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include, handler404, handler500
 from main_app import views as views
-from main_app.views import index
-# from main_app.views import index, SignUpView
 
 urlpatterns = [
 	url(r'admin/', admin.site.urls),
 	url(r'', include('main_app.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    # path('accounts/signup/', SignUpView.as_view(), name='signup'),
+    # path('accounts/', include('django.contrib.auth.urls')),
 ]
 
-handler404 = views.error_404
-handler500 = views.error_500
+handler404 = views.main.error_404
+handler500 = views.main.error_500
