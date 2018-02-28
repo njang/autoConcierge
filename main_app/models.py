@@ -55,6 +55,8 @@ class User(AbstractUser):
 class CarOwner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     loc_office = models.CharField(max_length=100)
+    def __str__(self):
+        return self.user.first_name
 
 class Car(models.Model):
     owner_id = models.ForeignKey(CarOwner, models.SET_NULL, blank=True, null=True)
@@ -77,3 +79,5 @@ class ServiceDriver(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     is_over_21 = models.BooleanField(default=False)
     is_gpa_good = models.BooleanField(default=False)
+    def __str__(self):
+        return self.user.first_name
