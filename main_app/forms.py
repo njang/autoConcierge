@@ -53,18 +53,3 @@ class CarOwnerSignUpForm(UserCreationForm):
         car_owner.save()
         return user
 
-class DonorSignUpForm(UserCreationForm):
-    location = forms.CharField(max_length=100)
-    class Meta(UserCreationForm.Meta):
-        model = User
-
-    @transaction.atomic
-    def save(self):
-        user = super().save(commit=False)
-        user.is_donor = True
-        user.save()
-        donor = Donor.objects.create(user=user)
-        donor.location = self.cleaned_data['location']
-        donor.save()
-        return user
-
