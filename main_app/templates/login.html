@@ -3,13 +3,13 @@
 
 {% block content %}
 <h1>Login</h1>
-<form method="POST" action=".">
+<form method='POST' action='.'>
 	{% csrf_token %}
 
-	<p><label for="id_email">Email</label> <input type="text" name="email" maxlength="254" required="" id="id_email"></p>
-	<p><label for="id_password">Password</label> <input type="password" name="password" required="" id="id_password"></p>
+	<p><label for='id_email'>Email</label> <input type='text' name='email' maxlength='254' required='' id='id_email'></p>
+	<p><label for='id_password'>Password</label> <input type='password' name='password' required='' id='id_password'></p>
 
-	<input type="submit" value="Submit" />
+	<input type='submit' value='Submit' class='btn btn-success'/>
 </form>
 
 {% endblock %}
