@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from main_app.models import CarOwner, ShopOwner, ServiceDriver
-# from main_app.forms import CarOwnerSignUpForm
+from django.http import HttpResponseRedirect
+from main_app.models import User, CarOwner, ShopOwner, ServiceDriver, Car
+from main_app.forms import AddCarForm
 
 # Create your views here.
 def index(request):
@@ -22,17 +23,29 @@ def signup_shop_owner(request):
 def signup_service_driver(request):
     return render(request, 'registration/service_driver.html')
 
-def profile_car_owner(request, user_id):
-    user = CarOwner.objects.get(user=user_id)
-    return render(request, 'profile/car_owner.html', {'user': user})
+def profile(request, user_id):
+    user = User.objects.get(id=user_id)
+    cars = Car.objects.filter(owner=request.user)
+    if user.is_car_owner:
+        user_info = CarOwner.objects.get(user=user_id)
+    elif user.is_shop_owner:
+        user_info = ShopOwner.objects.get(user=user_id)
+    else:
+        user_info = ServiceDriver.objects.get(user=user_id)
+    return render(request, 'profile/profile.html', {'user': user, 'user_info': user_info, 'cars': cars})
 
-def profile_shop_owner(request, user_id):
-    user = ShopOwner.objects.get(user=user_id)
-    return render(request, 'profile/shop_owner.html', {'user': user})
+def add_car_form(request):
+    form = AddCarForm()
+    return render(request, 'add_car.html', {'form': form})
 
-def profile_service_driver(request, user_id):
-    user = ServiceDriver.objects.get(user=user_id)
-    return render(request, 'profile/service_driver.html', {'user': user})
+def add_car(request):
+    form = AddCarForm(request.POST)
+    if form.is_valid():
+        car = form.save(commit = False)
+        car.owner = request.user
+        car.save()
+    path = '/' + str(request.user.id) + '/profile/'
+    return HttpResponseRedirect(path)
 
 def error_404(request):
     data = {}
