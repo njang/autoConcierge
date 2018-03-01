@@ -65,7 +65,7 @@ class Car(models.Model):
     loc_parking = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.owner.user.first_name + '\'s ' + self.car_year + ' ' + self.car_make + ' ' + self.car_model
+        return str(self.owner.first_name) + '\'s ' + str(self.car_year) + ' ' + str(self.car_make) + ' ' + str(self.car_model)
     
 class ShopOwner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)

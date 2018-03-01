@@ -71,11 +71,16 @@
 	<hr />
 	<form method='post' novalidate='' class='form-group row'>
 		{% csrf_token %}
-		<select name="car_years" id="id_car_year" class='form-control col-4 offset-4 my-1'></select>
-		<select name="car_makes" id="id_car_make" class='form-control col-4 offset-4 my-1'></select>
-		<select name="car_models" id="id_car_model" class='form-control col-4 offset-4 my-1'></select>
-		<select name="car_model_trims" id="id_car_model_trim" class='form-control col-4 offset-4 my-1'></select>
-		<select name="car_color" id="id_car_color" class='form-control col-4 offset-4 my-1'>
+		<label for='id_car_year' class='form-label col col-4 offset-4'>Year</label>
+		<select name="car_years" id="id_car_year" class='form-control col-4 offset-4 mb-1'></select>
+		<label for='id_car_make' class='form-label col col-4 offset-4'>Make</label>
+		<select name="car_makes" id="id_car_make" class='form-control col-4 offset-4 mb-1'></select>
+		<label for='id_car_model' class='form-label col col-4 offset-4'>Model</label>
+		<select name="car_models" id="id_car_model" class='form-control col-4 offset-4 mb-1'></select>
+		<label for='id_car_model_trim' class='form-label col col-4 offset-4'>Trim</label>
+		<select name="car_model_trims" id="id_car_model_trim" class='form-control col-4 offset-4 mb-1'></select>
+		<label for='id_car_color' class='form-label col col-4 offset-4'>Color</label>
+		<select name="car_color" id="id_car_color" class='form-control col-4 offset-4 mb-1'>
 			<option value='' selected disabled>---</option>
 			<option value='white'>White</option>
 			<option value='silver'>Silver</option>
@@ -89,8 +94,10 @@
 			<option value='navy'>Navy</option>
 			<option value='purple'>Purple</option>
 		</select>
-		<input id='id_car_license' type='text' placeholder='License plate #' class='form-control col-4 offset-4 my-1' />
-		<input id='id_loc_parking' type='text' placeholder='Parking location' class='form-control col-4 offset-4 my-1' />
+		<label for='id_car_license' class='form-label col col-4 offset-4'>License plate #</label>
+		<input id='id_car_license' type='text' class='form-control col-4 offset-4 mb-1' />
+		<label for='id_loc_parking' class='form-label col col-4 offset-4'>Parking location</label>
+		<input id='id_loc_parking' type='text' class='form-control col-4 offset-4 mb-1' />
 		<input class='btn btn-success col-4 offset-4 my-1' type="submit" value="Submit" />
 	</form>
 	<div id="car-model-data"></div>
