@@ -3,7 +3,11 @@
 {% block content %}
 <div>
     {% if user.is_authenticated %}
-        <a href='/'>{{user.id}} Hello, {{ user.first_name }}!</a>
+    	{{ user.username }}
+    	{{ user.email }}
+    	{{ user.is_car_owner }}
+    	{{ user.is_authenticated }}
+        <a href='/{{ user.id }}/profile'>Hello, {{ user.first_name }}!</a>
         <a href='/logout'>Logout</a>
     {% else %}
         <a href='/login'>Login</a>

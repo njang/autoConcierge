@@ -3,18 +3,6 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from main_app.forms import LoginForm
 
-
-# from django.views.generic import TemplateView
-# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-# from django.contrib.auth.models import User
-# from django.db.models import Q
-# from .models import Produce, Address, Balance
-# from django.utils import timezone
-# from statistics import mean
-
-# import os
-# import requests
-
 def login_view(request):
     if request.method == 'POST':
         # if post, then authenticate (user submitted username and password)
@@ -24,9 +12,10 @@ def login_view(request):
             p = form.cleaned_data['password']
             user = authenticate(username = u, password = p)
             if user is not None:
-                if user. is_active:
+                if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect('/')
+                    path = '/' + str(user.id) + '/profile/'
+                    return HttpResponseRedirect(path)
                 else:
                     print("The account has been disabled.")
             else:

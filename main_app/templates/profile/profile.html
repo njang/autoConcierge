@@ -2,8 +2,7 @@
 
 {% block content %}
     <h1>Profile: {{ user.user.first_name}} {{ user.user.last_name}} </h1>
-    {% if user.user.is_car_owner %} A car owner {% endif %}
-    {% if user.user.is_shop_owner %} A shop owner {% endif %}
-    {% if user.user.is_service_driver %} A service driver {% endif %}
-    <button>See Service Requests</button>
+    {% if user.user.is_car_owner %} {% include "./car_owner.html" %} {% endif %}
+    {% if user.user.is_shop_owner %} {% include "./car_owner.html" %} {% endif %}
+    {% if user.user.is_service_driver %} {% include "./car_owner.html" %} {% endif %}
 {% endblock %}
