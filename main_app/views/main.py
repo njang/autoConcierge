@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
-from main_app.models import User, CarOwner, ShopOwner, ServiceDriver
+from main_app.models import User, CarOwner, ShopOwner, ServiceDriver, Car
 from main_app.forms import AddCarForm
 
 # Create your views here.
@@ -25,13 +25,14 @@ def signup_service_driver(request):
 
 def profile(request, user_id):
     user = User.objects.get(id=user_id)
+    cars = Car.objects.filter(owner=request.user)
     if user.is_car_owner:
         user_info = CarOwner.objects.get(user=user_id)
     elif user.is_shop_owner:
         user_info = ShopOwner.objects.get(user=user_id)
     else:
         user_info = ServiceDriver.objects.get(user=user_id)
-    return render(request, 'profile/profile.html', {'user': user, 'user_info': user_info})
+    return render(request, 'profile/profile.html', {'user': user, 'user_info': user_info, 'cars': cars})
 
 def add_car_form(request):
     form = AddCarForm()

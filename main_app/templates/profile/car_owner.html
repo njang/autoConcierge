@@ -2,4 +2,24 @@
     A car owner
     <a href='/addcar' class='btn btn-primary'>Add car</a>
     <button class='btn btn-basic'>Request service</button>
+    <table>
+    	<tr>
+    		<th>Year</th>
+    		<th>Make</th>
+    		<th>Model</th>
+    		<th>Trim</th>
+    		<th>Color</th>
+    		<th>License plate</th>
+    	</tr>
+    {% for car in cars %}
+		<tr>
+			<td>{{ car.car_year }}</td>
+			<td>{{ car.car_make }}</td>
+			<td>{{ car.car_model }}</td>
+			<td>{{ car.car_model_trim }}</td>
+			<td>{{ car.car_color }}</td>
+			<td>{{ car.car_license }}</td>
+		</tr>
+	{% endfor %}
+	</table>
 {% endblock %}
