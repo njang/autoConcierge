@@ -53,7 +53,7 @@ class CarOwner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     loc_office = models.CharField(max_length=100)
     def __str__(self):
-        return self.user.first_name
+        return self.user.first_name + ' ' + self.user.last_name
 
 class Car(models.Model):
     owner_id = models.ForeignKey(CarOwner, models.SET_NULL, blank=True, null=True)
@@ -70,11 +70,11 @@ class ShopOwner(models.Model):
     address_gps_lat = models.DecimalField(max_digits=10, decimal_places=6, default=0)
     address_gps_lng = models.DecimalField(max_digits=10, decimal_places=6, default=0)
     def __str__(self):
-        return self.shop_name
+        return self.shop_name + ' by ' + self.user.first_name + ' ' + self.user.last_name
 
 class ServiceDriver(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     is_over_21 = models.BooleanField(default=False)
     is_gpa_over3 = models.BooleanField(default=False)
     def __str__(self):
-        return self.user.first_name
+        return self.user.first_name + ' ' + self.user.last_name
