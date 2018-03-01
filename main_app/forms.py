@@ -61,6 +61,8 @@ class CarOwnerSignUpForm(UserCreationForm):
 class ShopOwnerSignUpForm(UserCreationForm):
     shop_name = forms.CharField(label='Shop name',max_length=100)
     address_street = forms.CharField(label='Address',max_length=100)
+    address_gps_lat = forms.DecimalField(label='address_gps_lat', max_digits=10, decimal_places=6)
+    address_gps_lng = forms.DecimalField(label='address_gps_lng', max_digits=10, decimal_places=6)
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -71,8 +73,26 @@ class ShopOwnerSignUpForm(UserCreationForm):
         user.is_shop_owner = True
         user.save()
         shop_owner = ShopOwner.objects.create(user=user)
-        shop_owner.shop_name = self.cleaned_data.get('shop_name')        
+        shop_owner.shop_name = self.cleaned_data.get('shop_name')
         shop_owner.address_street = self.cleaned_data.get('address_street')
+
+        # Prepare for Google Maps geocode API
+        params = {
+            'address': self.cleaned_data.get('address_street'),
+            'sensor': 'false',
+            'region': 'us'
+        }
+
+        # Make the request and get the response data
+        req = requests.get(GOOGLE_MAPS_API_URL, params=params)
+        res = req.json()
+
+        # Use the first result
+        result = res['results'][0]
+
+        shop_owner.address_street = result['formatted_address']
+        shop_owner.address_gps_lat = result['geometry']['location']['lat']
+        shop_owner.address_gps_lng = result['geometry']['location']['lng']
         shop_owner.save()
         return user
 

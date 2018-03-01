@@ -67,8 +67,8 @@ class ShopOwner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     shop_name = models.CharField(max_length=100)
     address_street = models.CharField(max_length=100)
-    # address_gps_lat = models.DecimalField(max_digits=10, decimal_places=6)
-    # address_gps_lng = models.DecimalField(max_digits=10, decimal_places=6)
+    address_gps_lat = models.DecimalField(max_digits=10, decimal_places=6, default=0)
+    address_gps_lng = models.DecimalField(max_digits=10, decimal_places=6, default=0)
     def __str__(self):
         return self.shop_name
 
