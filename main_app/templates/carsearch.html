@@ -18,7 +18,7 @@
 			// carquery.setFilters( {cq_sold_in_us:true} );
 
 			//Optional: initialize the year, make, model, and trim drop downs by providing their element IDs
-			carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+			carquery.initYearMakeModelTrim('id_car_year', 'id_car_make', 'id_car_model', 'id_car_model_trim');
 
 			//Optional: set the onclick event for a button to show car data.
 			$('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
@@ -71,10 +71,26 @@
 	<hr />
 	<form method='post' novalidate='' class='form-group row'>
 		{% csrf_token %}
-		<select name="car-years" id="car-years" class='form-control col-4 offset-4 my-1'></select>
-		<select name="car-makes" id="car-makes" class='form-control col-4 offset-4 my-1'></select>
-		<select name="car-models" id="car-models" class='form-control col-4 offset-4 my-1'></select>
-		<select name="car-model-trims" id="car-model-trims" class='form-control col-4 offset-4 my-1'></select>
+		<select name="car_years" id="id_car_year" class='form-control col-4 offset-4 my-1'></select>
+		<select name="car_makes" id="id_car_make" class='form-control col-4 offset-4 my-1'></select>
+		<select name="car_models" id="id_car_model" class='form-control col-4 offset-4 my-1'></select>
+		<select name="car_model_trims" id="id_car_model_trim" class='form-control col-4 offset-4 my-1'></select>
+		<select name="car_color" id="id_car_color" class='form-control col-4 offset-4 my-1'>
+			<option value='' selected disabled>---</option>
+			<option value='white'>White</option>
+			<option value='silver'>Silver</option>
+			<option value='grey'>Grey</option>
+			<option value='black'>Black</option>
+			<option value='red'>Red</option>
+			<option value='orange'>Orange</option>
+			<option value='yellow'>Yellow</option>
+			<option value='green'>Green</option>
+			<option value='blue'>Blue</option>
+			<option value='navy'>Navy</option>
+			<option value='purple'>Purple</option>
+		</select>
+		<input id='id_car_license' type='text' placeholder='License plate #' class='form-control col-4 offset-4 my-1' />
+		<input id='id_loc_parking' type='text' placeholder='Parking location' class='form-control col-4 offset-4 my-1' />
 		<input class='btn btn-success col-4 offset-4 my-1' type="submit" value="Submit" />
 	</form>
 	<div id="car-model-data"></div>
