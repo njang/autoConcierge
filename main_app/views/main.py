@@ -26,22 +26,22 @@ def signup_service_driver(request):
 def profile(request, user_id):
     user = User.objects.get(id=user_id)
     if user.is_car_owner:
-        user = CarOwner.objects.get(user=user_id)
+        user_info = CarOwner.objects.get(user=user_id)
     elif user.is_shop_owner:
-        user = ShopOwner.objects.get(user=user_id)
+        user_info = ShopOwner.objects.get(user=user_id)
     else:
-        user = ServiceDriver.objects.get(user=user_id)
-    return render(request, 'profile/profile.html', {'user': user})
+        user_info = ServiceDriver.objects.get(user=user_id)
+    return render(request, 'profile/profile.html', {'user': user, 'user_info': user_info})
 
 def add_car_form(request):
     form = AddCarForm()
-    return render(request, 'carsearch.html', {'form': form})
+    return render(request, 'add_car.html', {'form': form})
 
 def add_car(request):
     form = AddCarForm(request.POST)
     if form.is_valid():
         car = form.save(commit = False)
-        car.owner = request.user
+        car.owner = request.user.user
         car.save()
     path = '/' + str(request.user.id) + '/profile/'
     return HttpResponseRedirect(path)

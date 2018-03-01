@@ -61,7 +61,7 @@ class CarOwnerSignUpForm(UserCreationForm):
 class AddCarForm(forms.ModelForm):
     class Meta:
         model = Car
-        fields = ['car_year', 'car_make', 'car_model', 'car_color', 'car_license', 'loc_parking']
+        fields = ['car_year', 'car_make', 'car_model', 'car_model_trim', 'car_color', 'car_license', 'loc_parking']
 
 class ShopOwnerSignUpForm(UserCreationForm):
     shop_name = forms.CharField(label='Shop name',max_length=100)

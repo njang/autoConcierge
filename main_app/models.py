@@ -60,6 +60,7 @@ class Car(models.Model):
     car_year = models.IntegerField(default=2010)
     car_make = models.CharField(max_length=100)
     car_model = models.CharField(max_length=100)
+    car_model_trim = models.CharField(max_length=100)
     car_color = models.CharField(max_length=100)
     car_license = models.CharField(max_length=100)
     loc_parking = models.CharField(max_length=100)

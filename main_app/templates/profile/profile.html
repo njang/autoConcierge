@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Profile: {{ user.user.first_name}} {{ user.user.last_name}} </h1>
-    {% if user.user.is_car_owner %} {% include "./car_owner.html" %}
-    {% elif user.user.is_shop_owner %} {% include "./shop_owner.html" %}
-    {% elif user.user.is_service_driver %} {% include "./service_driver.html" %} {% endif %}
+    <h1>Profile: {{ user.first_name}} {{ user.last_name}} </h1>
+    {% if user.is_car_owner %} {% include "./car_owner.html" %}
+    {% elif user.is_shop_owner %} {% include "./shop_owner.html" %}
+    {% elif user.is_service_driver %} {% include "./service_driver.html" %} {% endif %}
 {% endblock %}
