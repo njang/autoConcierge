@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Profile: Car Owner</h1>
+    <h1>Profile: Shop Owner</h1>
     {{ user.user.first_name}} {{ user.user.last_name}} 
-    {% if user.user.is_car_owner %} A car owner {% endif %}
-    <button>Add car</button>
-    <button>Request service</button>
+    {% if user.user.is_shop_owner %} A shop owner {% endif %}
+    <button>See Service Requests</button>
 {% endblock %}
