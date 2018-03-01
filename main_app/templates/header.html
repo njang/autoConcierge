@@ -1,8 +1,10 @@
 {% load staticfiles %}
 
 {% block content %}
-    {% if user.user.is_authenticated %}
-        <a href='/{{ user.user.id }}/profile'>Hello, {{ user.user.first_name }}!</a>
+	User: {{user}}
+	User.user: {{user.user}}
+    {% if user.is_authenticated %}
+        <a href='/{{ user.id }}/profile'>Hello, {{ user.first_name }}!</a>
         <a href='/logout'>Logout</a>
     {% else %}
         <a href='/login'>Login</a>
