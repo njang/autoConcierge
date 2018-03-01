@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import main, car_owner, shop_owner, service_driver
+from .views import main, car_owner, shop_owner, service_driver, user
 
 urlpatterns = [
     url(r'^$', main.index),
@@ -10,4 +10,6 @@ urlpatterns = [
     url(r'^([0-9]+)/car-owner-profile/$', main.profile_car_owner, name='car_owner_profile'),
     url(r'^([0-9]+)/shop-owner-profile/$', main.profile_shop_owner, name='shop_owner_profile'),
     url(r'^([0-9]+)/service-driver-profile/$', main.profile_service_driver, name='service_driver_profile'),
+	url(r'^login/$', user.login_view, name='login'),		# display login page
+	url(r'^logout/$', user.logout_view, name='logout'),	# route to logout
 ]
