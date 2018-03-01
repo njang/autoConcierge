@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^signup/shopowner/$', shop_owner.SignUpView.as_view(), name='shop_owner_signup'),
     url(r'^signup/servicedriver/$', service_driver.SignUpView.as_view(), name='service_driver_signup'),
     url(r'^([0-9]+)/profile/$', main.profile, name='profile'),
+    url(r'^addcar/$', main.add_car_form, name='addcar'),
 	url(r'^login/$', user.login_view, name='login'),		# display login page
 	url(r'^logout/$', user.logout_view, name='logout'),	# route to logout
 ]

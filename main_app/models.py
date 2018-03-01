@@ -56,12 +56,16 @@ class CarOwner(models.Model):
         return self.user.first_name + ' ' + self.user.last_name
 
 class Car(models.Model):
-    owner_id = models.ForeignKey(CarOwner, models.SET_NULL, blank=True, null=True)
+    owner = models.ForeignKey(User, on_delete=models.PROTECT, related_name='car_owner')
     car_year = models.IntegerField(default=2010)
     car_make = models.CharField(max_length=100)
     car_model = models.CharField(max_length=100)
     car_color = models.CharField(max_length=100)
+    car_license = models.CharField(max_length=100)
     loc_parking = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.owner.user.first_name + '\'s ' + self.car_year + ' ' + self.car_make + ' ' + self.car_model
     
 class ShopOwner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)

@@ -2,7 +2,7 @@ from django import forms
 from django.db import transaction
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.views.generic.edit import UpdateView
-from .models import User, CarOwner, ShopOwner, ServiceDriver
+from .models import User, CarOwner, ShopOwner, ServiceDriver, Car
 
 from django.http import HttpResponseRedirect
 import requests
@@ -57,6 +57,11 @@ class CarOwnerSignUpForm(UserCreationForm):
         car_owner.loc_office = self.cleaned_data.get('loc_office')
         car_owner.save()
         return user
+
+class AddCarForm(forms.ModelForm):
+    class Meta:
+        model = Car
+        fields = ['car_year', 'car_make', 'car_model', 'car_color', 'car_license', 'loc_parking']
 
 class ShopOwnerSignUpForm(UserCreationForm):
     shop_name = forms.CharField(label='Shop name',max_length=100)
