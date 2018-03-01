@@ -41,7 +41,7 @@ def add_car(request):
     form = AddCarForm(request.POST)
     if form.is_valid():
         car = form.save(commit = False)
-        car.owner = request.user.user
+        car.owner = request.user
         car.save()
     path = '/' + str(request.user.id) + '/profile/'
     return HttpResponseRedirect(path)
