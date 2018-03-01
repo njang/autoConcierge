@@ -32,18 +32,6 @@ def profile(request, user_id):
         user = ServiceDriver.objects.get(user=user_id)
     return render(request, 'profile/profile.html', {'user': user})
 
-# def profile_car_owner(request, user_id):
-#     user = CarOwner.objects.get(user=user_id)
-#     return render(request, 'profile/car_owner.html', {'user': user})
-
-# def profile_shop_owner(request, user_id):
-#     user = ShopOwner.objects.get(user=user_id)
-#     return render(request, 'profile/shop_owner.html', {'user': user})
-
-# def profile_service_driver(request, user_id):
-#     user = ServiceDriver.objects.get(user=user_id)
-#     return render(request, 'profile/service_driver.html', {'user': user})
-
 def error_404(request):
     data = {}
     return render(request,'404.html', data)
