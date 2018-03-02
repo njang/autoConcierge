@@ -73,7 +73,8 @@ class Service(models.Model):
     owner = models.ForeignKey(User, on_delete=models.PROTECT, related_name='owner_car')
     car = models.ForeignKey(Car, on_delete=models.PROTECT, related_name='car')
     description = models.CharField(max_length=100)
-
+    date = models.DateField(auto_now_add=True, blank=True)
+    shop = models.ForeignKey(ShopOwner, on_delete=models.PROTECT, related_name='owner_shop')
     def __str__(self):
         return self.description
     
