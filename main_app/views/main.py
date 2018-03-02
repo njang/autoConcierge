@@ -62,6 +62,16 @@ def edit_car(request, car_id):
     return render(request, 'edit_car.html', {'car': car, 'form': form})
 
 def update_car(request, car_id):
+    form = AddCarForm(request.POST)
+    if form.is_valid():
+        car = form.save(commit = False)
+        if (len(car.car_make) == 3 and car.car_make != 'kia'):
+            car.car_make = car.car_make.upper()
+        else:    
+            car.car_make = car.car_make.title()
+        car.id = car_id
+        car.owner = request.user
+        car.save()
     path = '/' + str(request.user.id) + '/profile/'
     return HttpResponseRedirect(path)
 
