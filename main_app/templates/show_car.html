@@ -16,9 +16,11 @@
     <div class='my-2'>
         <button type='button' class='btn btn-danger col-6 col-sm-4 col-lg-2' data-toggle='modal' data-target='#modalConfirmRemove'>Remove Car</button>
     </div>
+    {% comment %}
     <div class='my-2'>
         <a class='btn btn-light col-6 col-sm-4 col-lg-2' href='/{{user.id}}/profile'>Go back</a>
     </div>
+    {% endcomment %}
 
     <!-- Confirmation Modal -->
     <div id='modalConfirmRemove' class='modal fade text-dark' role='dialog'>

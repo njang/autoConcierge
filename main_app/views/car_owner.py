@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import CreateView, ListView, UpdateView
 from django.http import HttpResponseRedirect
-from main_app.forms import CarOwnerSignUpForm, PostRequestForm
+from main_app.forms import CarOwnerSignUpForm, AddCarForm, PostRequestForm
 from main_app.models import User, CarOwner, Car, ShopOwner, Service
 from django.contrib.auth import login
 
@@ -56,7 +56,7 @@ def update_car(request, car_id):
         car.id = car_id
         car.owner = request.user
         car.save()
-    path = '/' + str(request.user.id) + '/profile/'
+    path = '/car/' + str(car.id)
     return HttpResponseRedirect(path)
 
 def remove_car(request, car_id):
@@ -76,7 +76,7 @@ def post_request(request, car_id):
         service_request.owner = request.user
         service_request.description = form.description
         service_request.date = form.date
-        service_request.shop = form.shop
+        service_request.shop = form.shop.user
         service_request.save()
     path = '/' + str(request.user.id) + '/profile/'
     return HttpResponseRedirect(path)
