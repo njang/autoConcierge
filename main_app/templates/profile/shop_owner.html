@@ -1,7 +1,22 @@
 {% block content %}
-    <div>User: {{ user }}</div>
-    <div>{{ user_info.shop_name }}</div>
-    <div>{{ user_info.address_street }}</div>
-    <div>{{ user_info.phone_number }}</div>
-    <a href='/shop/{{ user.id }}/edit/'>Edit Info</a>
+    <div class='my-2'>
+    	<div class='col-6 offset-3'>
+	    	{{ user_info.shop_name }}
+    	</div>
+    </div>
+    <div class='my-2'>
+    	<div class='col-6 offset-3'>
+    		{{ user_info.address_street }}
+    	</div>
+    </div>
+    <div class='my-2'>
+    	<div class='col-6 offset-3'>
+    		<a href="tel:{{ user_info.phone_number }}">{{ user_info.phone_number }}</a>
+    	</div>
+    </div>
+    <div class='my-2'>
+    	<div class='col-6 offset-3'>
+    		<a href='/shop/{{ user.id }}/edit/' class='btn btn-primary'>Edit Info</a>
+    	</div>
+    </div>
 {% endblock %}
