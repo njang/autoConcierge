@@ -70,25 +70,25 @@
 	<h1>Add a Car</h1>
 	<form action="post_url/" method="post" class='form-group'>
 		{% csrf_token %}
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_car_year' class='form-label col-12'>Year</label>
-			<select name='car_year' id='id_car_year' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5'></select>
+			<select name='car_year' id='id_car_year' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4'></select>
 		</div>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_car_make' class='form-label col-12'>Make</label>
-			<select name='car_make' id='id_car_make' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5'></select>
+			<select name='car_make' id='id_car_make' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4'></select>
 		</div>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_car_model' class='form-label col-12'>Model</label>
-			<select name='car_model' id='id_car_model' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5'></select>
+			<select name='car_model' id='id_car_model' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4'></select>
 		</div>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_car_model_trim' class='form-label col-12'>Trim</label>
-			<select name='car_model_trim' id='id_car_model_trim' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5'></select>
+			<select name='car_model_trim' id='id_car_model_trim' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4'></select>
 		</div>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_car_color' class='form-label col-12'>Color</label>
-			<select name='car_color' id='id_car_color' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5'>
+			<select name='car_color' id='id_car_color' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4'>
 				<option value='' selected disabled>---</option>
 				<option value='White'>White</option>
 				<option value='Silver'>Silver</option>
@@ -103,16 +103,16 @@
 				<option value='Purple'>Purple</option>
 			</select>
 		</div>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_car_license' class='form-label col-12'>License plate #</label>
-			<input name='car_license' id='id_car_license' type='text' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5' />
+			<input name='car_license' id='id_car_license' type='text' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4' />
 		</div>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_loc_parking' class='form-label col-12'>Parking location</label>
-			<input name='loc_parking' id='id_loc_parking' type='text' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5' />
+			<input name='loc_parking' id='id_loc_parking' type='text' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4' />
 		</div>
-		<div class='row my-4'>
-			<input class='btn btn-success col-4 offset-4' type='submit' value='Save' />
+		<div class='my-4'>
+			<input class='btn btn-success col-4' type='submit' value='Save' />
 		</div>
 	</form>
 {% endblock %}
