@@ -57,7 +57,13 @@ def show_car(request, car_id):
 
 def edit_car(request, car_id):
     car = Car.objects.get(id=car_id)
-    return render(request, 'show_car.html', {'car': car})
+    form = AddCarForm({'car_year': car.car_year, 'car_license': car.car_license})
+    # 'car_year', 'car_make', 'car_model', 'car_model_trim', 'car_color', 'car_license', 'loc_parking'
+    return render(request, 'edit_car.html', {'car': car, 'form': form})
+
+def update_car(request, car_id):
+    path = '/' + str(request.user.id) + '/profile/'
+    return HttpResponseRedirect(path)
 
 def remove_car(request, car_id):
     Car.objects.get(id=car_id).delete()
