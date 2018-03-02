@@ -1,12 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-	<h1>Request Service</h1>
+	<h4>Request Service</h4>
 	<hr />
-	<form action="post_url/" method="post" class='form-group row'>
+	<form action="request/" method="post" class='form-group'>
 		{% csrf_token %}
-		<label for='id_description' class='form-label col col-4 offset-4'>Description</label>
-		<select name='description' id='id_description' class='form-control col-4 offset-4 mb-1'></select>
-		<input class='btn btn-success col-4 offset-4 my-1' type='submit' value='Submit' />
+		<div class='my-2'>
+			<label for='id_description' class='form-label col-12'>Description</label>
+			<input type='text' name='description' id='id_description' class='form-control col-8 offset-2'></select>
+		</div>
+		<div class='my-2'>
+			<label for='id_date' class='form-label col-12'>Date</label>
+			<input type='date' name='date' id='id_date' class='form-control col-8 offset-2'></select>
+		</div>		
+		<div class='my-2'>
+			<label for='id_shop' class='form-label col-12'>Shop</label>
+			<select name='shop' id='id_shop' class='form-control col-8 offset-2'>
+				<option value='' selected disabled>---</option>
+				{% for shop in shops %}
+					<option value='{{shop.id}}'>{{shop.shop_name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class='my-2'>
+			<input class='btn btn-success col-4' type='submit' value='Request' />
+		</div>
 	</form>
 	<div id='car-model-data'></div>
 {% endblock %}
