@@ -15,8 +15,8 @@ urlpatterns = [
     url(r'^car/([0-9]+)/edit/update/$', car_owner.update_car, name='update_car'),
     url(r'^car/([0-9]+)/remove/$', car_owner.remove_car, name='remove_car'),
 	url(r'^car/([0-9]+)/service/$', car_owner.service_car, name='service_car'),
-    url(r'^shop/([0-9]+)/edit/$', main.edit_shop, name='edit_shop'),
-    url(r'^shop/([0-9]+)/edit/update$', main.update_shop, name='update_shop'),
+    url(r'^shop/([0-9]+)/edit/$', shop_owner.edit_shop, name='edit_shop'),
+    url(r'^shop/([0-9]+)/edit/update$', shop_owner.update_shop, name='update_shop'),
 	url(r'^login/$', user.login_view, name='login'),		# display login page
 	url(r'^logout/$', user.logout_view, name='logout'),	# route to logout
 ]
