@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Show car</h1>
+    {{ car.id}}
     <div>{{ car.car_year }} {{ car.car_make }} {{ car.car_model }}</div>
     <div>{{ car.car_color }}</div>
     <div>{{ car.car_license }}</div>
     <div class='row'>
 	    <button class='btn btn-success col col-md-2 col-sm-6 offset-md-5 offset-sm-3 my-2'>Schedule Service</button>
 	    <button class='btn btn-primary col col-md-2 col-sm-6 offset-md-5 offset-sm-3 my-2'>Edit Info</button>
-	    <a href='/car/{{ car.id }}/remove/'><button class='btn btn-danger col col-md-2 col-sm-6 offset-md-5 offset-sm-3 my-2'>Remove Car</button></a>
+	    <a class='col col-md-2 col-sm-6 offset-md-5 offset-sm-3 my-2' href='remove'>
+            <button class='btn btn-danger'>Remove Car</button>
+        </a>
     </div>
     <hr />
 {% endblock %}
