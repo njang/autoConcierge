@@ -1,25 +1,10 @@
 {% block content %}
-    A car owner
-    <a href='/addcar' class='btn btn-primary'>Add car</a>
-    <button class='btn btn-basic'>Request service</button>
-    <table>
-    	<tr>
-    		<th>Year</th>
-    		<th>Make</th>
-    		<th>Model</th>
-    		<th>Trim</th>
-    		<th>Color</th>
-    		<th>License plate</th>
-    	</tr>
-    {% for car in cars %}
-		<tr><a href='/'>
-			<td>{{ car.id }} {{ car.car_year }}</td>
-			<td>{{ car.car_make }}</td>
-			<td>{{ car.car_model }}</td>
-			<td>{{ car.car_model_trim }}</td>
-			<td>{{ car.car_color }}</td>
-			<td>{{ car.car_license }}</td>
-		</a></tr>
-	{% endfor %}
-	</table>
+    <div class='row'>
+        {% for car in cars %}
+        <div class='col col-4 offset-4 my-1 bg-light text-black'>
+            <a href='/car/{{car.id}}'>{{ car.car_year }} {{ car.car_make }} {{ car.car_model }}</a>
+        </div>
+       {% endfor %}
+    </div>
+    <a href='/car/add' class='btn btn-primary'>Add car</a>
 {% endblock %}
