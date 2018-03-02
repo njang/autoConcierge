@@ -67,8 +67,7 @@
 			$('#cq-search-btn').click( function(){ carquery.search(); });
 		});
 	</script>
-	<h1>Car Search</h1>
-	<hr />
+	<h1>Add a Car</h1>
 	<form action="post_url/" method="post" class='form-group'>
 		{% csrf_token %}
 		<div class='row my-2'>
@@ -112,9 +111,8 @@
 			<label for='id_loc_parking' class='form-label col-12'>Parking location</label>
 			<input name='loc_parking' id='id_loc_parking' type='text' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5' />
 		</div>
-		<div class='row my-2'>
-			<input class='btn btn-success col-4 offset-4 my-1' type='submit' value='Submit' />
+		<div class='row my-4'>
+			<input class='btn btn-success col-4 offset-4' type='submit' value='Save' />
 		</div>
 	</form>
-	<div id='car-model-data'></div>
 {% endblock %}
