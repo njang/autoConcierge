@@ -42,6 +42,10 @@ def add_car(request):
     form = AddCarForm(request.POST)
     if form.is_valid():
         car = form.save(commit = False)
+        if (len(car.car_make) == 3 and car.car_make != 'kia'):
+            car.car_make = car.car_make.upper()
+        else:    
+            car.car_make = car.car_make.title()
         car.owner = request.user
         car.save()
     path = '/' + str(request.user.id) + '/profile/'
@@ -50,6 +54,11 @@ def add_car(request):
 def show_car(request, car_id):
     car = Car.objects.get(id=car_id)
     return render(request, 'show_car.html', {'car': car})
+
+def remove_car(request, car_id):
+    Car.objects.get(id=car_id).delete()
+    path = '/' + str(request.user.id) + '/profile/'
+    return HttpResponseRedirect(path)
 
 def error_404(request):
     data = {}
