@@ -1,4 +1,7 @@
 {% block content %}
-	A shop owner
-    <button>See Service Requests</button>
+    <div>User: {{ user }}</div>
+    <div>{{ user_info.shop_name }}</div>
+    <div>{{ user_info.address_street }}</div>
+    <div>{{ user_info.phone_number }}</div>
+    <a href='/shop/{{ user.id }}/edit/'>Edit Info</a>
 {% endblock %}

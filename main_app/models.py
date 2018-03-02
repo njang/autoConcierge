@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from phonenumber_field.modelfields import PhoneNumberField
 
 class UserManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
@@ -82,8 +83,9 @@ class ShopOwner(models.Model):
     address_street = models.CharField(max_length=100)
     address_gps_lat = models.DecimalField(max_digits=10, decimal_places=6, default=0)
     address_gps_lng = models.DecimalField(max_digits=10, decimal_places=6, default=0)
+    phone_number = models.CharField(max_length=100)
     def __str__(self):
-        return self.shop_name + ' by ' + self.user.first_name + ' ' + self.user.last_name
+        return self.shop_name
 
 class ServiceDriver(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from main_app.models import User, CarOwner, ShopOwner, ServiceDriver, Car
-from main_app.forms import AddCarForm
+from main_app.forms import AddCarForm, ShopOwnerSignUpForm, EditShopForm
 
 # Create your views here.
 def index(request):
@@ -76,6 +76,22 @@ def update_car(request, car_id):
 
 def remove_car(request, car_id):
     Car.objects.get(id=car_id).delete()
+    path = '/' + str(request.user.id) + '/profile/'
+    return HttpResponseRedirect(path)
+
+def edit_shop(request, user_id):
+    shop = ShopOwner.objects.get(user=user_id)
+    form = EditShopForm({'shop_name': shop.shop_name, 'address_street': shop.address_street, 'phone_number': shop.phone_number})
+    return render(request, 'edit_shop.html', {'shop': shop, 'form': form})
+
+def update_shop(request, shop_id):
+    form = EditShopForm(request.POST)
+    if form.is_valid():
+        shop = ShopOwner.objects.get(id=shop_id)
+        shop.shop_name = form.cleaned_data['shop_name']
+        shop.address_street = form.cleaned_data['address_street']
+        shop.phone_number = form.cleaned_data['phone_number']
+        shop.save()
     path = '/' + str(request.user.id) + '/profile/'
     return HttpResponseRedirect(path)
 
