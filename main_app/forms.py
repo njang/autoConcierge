@@ -4,7 +4,7 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from django.views.generic.edit import UpdateView
 from .models import User, CarOwner, ShopOwner, ServiceDriver, Car, Service
 
-from phonenumber_field.modelfields import PhoneNumberField
+# from phonenumber_field.modelfields import PhoneNumberField
 from django.http import HttpResponseRedirect
 import requests
 
