@@ -2,8 +2,14 @@
 
 {% block content %}
 	<h2>Sign up for a free account</h2>
-	<p class="lead">Select below the type of account you want to create</p>
-	<div><a href="/signup/carowner" class="btn btn-student btn-lg" role="button">Car owner</a></div>
-	<div><a href="/signup/shopowner" class="btn btn-teacher btn-lg" role="button">Shop owner</a></div>
-	<div><a href="/signup/servicedriver" class="btn btn-teacher btn-lg" role="button">Service driver</a></div>
+	<p class='lead'>Select below the type of account you want to create</p>
+	<div class='row'>
+		<a href='/signup/carowner' class='col col-md-4 offset-md-4'><button class='btn btn-primary'>Car owner</button></a>
+	</div>
+	<div class='row'>
+		<a href='/signup/shopowner'><button class='btn btn-info col col-md-4 offset-md-4'>Shop owner</button></a>
+	</div>
+	<div class='row'>
+		<a href='/signup/servicedriver'><button class='btn btn-success col col-md-4 offset-md-4'>Service driver</button></a>
+	</div>
 {% endblock %}
