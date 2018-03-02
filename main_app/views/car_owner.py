@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import CreateView, ListView, UpdateView
 from django.http import HttpResponseRedirect
-from main_app.forms import CarOwnerSignUpForm
+from main_app.forms import CarOwnerSignUpForm, PostRequestForm
 from main_app.models import User, CarOwner, Car, ShopOwner, Service
 from django.contrib.auth import login
 
@@ -70,11 +70,13 @@ def service_car(request, car_id):
     return render(request, 'request_service.html', {'car': car, 'shops': shops})
 
 def post_request(request, car_id):
-    form = AddCarForm(request.POST)
-    service_request = Service.objects.get(id=car_id)
+    form = PostRequestForm(request.POST)
     if form.is_valid():
-        car = form.save(commit = False)
-        car.owner = request.user
-        car.save()
+        service_request = form.save(commit = False)
+        service_request.owner = request.user
+        service_request.description = form.description
+        service_request.date = form.date
+        service_request.shop = form.shop
+        service_request.save()
     path = '/' + str(request.user.id) + '/profile/'
     return HttpResponseRedirect(path)

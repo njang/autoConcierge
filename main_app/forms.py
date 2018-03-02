@@ -2,7 +2,7 @@ from django import forms
 from django.db import transaction
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.views.generic.edit import UpdateView
-from .models import User, CarOwner, ShopOwner, ServiceDriver, Car
+from .models import User, CarOwner, ShopOwner, ServiceDriver, Car, Service
 
 from phonenumber_field.modelfields import PhoneNumberField
 from django.http import HttpResponseRedirect
@@ -106,6 +106,11 @@ class EditShopForm(forms.ModelForm):
     class Meta:
         model = ShopOwner
         fields = ('shop_name', 'address_street', 'phone_number')
+
+class PostRequestForm(forms.ModelForm):
+    class Meta:
+        model = Service
+        fields = ('description', 'date', 'shop')
 
 def update_address(request):
     form = AddressForm(request.POST)
