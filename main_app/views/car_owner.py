@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import CreateView, ListView, UpdateView
 from django.http import HttpResponseRedirect
 from main_app.forms import CarOwnerSignUpForm
-from main_app.models import User, CarOwner, Car
+from main_app.models import User, CarOwner, Car, ShopOwner, Service
 from django.contrib.auth import login
 
 class SignUpView(CreateView):
@@ -65,6 +65,16 @@ def remove_car(request, car_id):
     return HttpResponseRedirect(path)
 
 def service_car(request, car_id):
-    Car.objects.get(id=car_id).delete()
+    car = Car.objects.get(id=car_id)
+    shops = ShopOwner.objects.all()
+    return render(request, 'request_service.html', {'car': car, 'shops': shops})
+
+def post_request(request, car_id):
+    form = AddCarForm(request.POST)
+    service_request = Service.objects.get(id=car_id)
+    if form.is_valid():
+        car = form.save(commit = False)
+        car.owner = request.user
+        car.save()
     path = '/' + str(request.user.id) + '/profile/'
     return HttpResponseRedirect(path)
