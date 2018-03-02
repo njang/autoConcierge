@@ -8,7 +8,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.http import HttpResponseRedirect
 import requests
 
-GOOGLE_MAPS_API_URL = 'http://maps.googleapis.com/maps/api/geocode/json'
+GOOGLE_MAPS_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json'
 
 class LoginForm(forms.Form):
     email = forms.CharField(label="Email", max_length=254)
