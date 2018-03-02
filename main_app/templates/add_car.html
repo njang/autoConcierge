@@ -67,50 +67,52 @@
 			$('#cq-search-btn').click( function(){ carquery.search(); });
 		});
 	</script>
-	<h1>Car Search</h1>
-	<hr />
-	<form action="post_url/" method="post" class='form-group row'>
+	<h1>Add a Car</h1>
+	<form action="post_url/" method="post" class='form-group'>
 		{% csrf_token %}
-		{% comment %}		
-		{{ form.as_p }}
-
-		<input type='text' name='car_year' id='id_car_year' class='form-control col-4 offset-4 mb-1' />
-		<input type='text' name='car_make' id='id_car_make' class='form-control col-4 offset-4 mb-1' />
-		<input type='text' name='car_model' id='id_car_model' class='form-control col-4 offset-4 mb-1' />
-		<input type='text' name='car_model_trim' id='id_car_model_trim' class='form-control col-4 offset-4 mb-1' />
-		<input type='text' name='car_color' id='id_car_color' class='form-control col-4 offset-4 mb-1' />
-		{% endcomment %}
-
-
-		<label for='id_car_year' class='form-label col col-4 offset-4'>Year</label>
-		<select name='car_year' id='id_car_year' class='form-control col-4 offset-4 mb-1'></select>
-		<label for='id_car_make' class='form-label col col-4 offset-4'>Make</label>
-		<select name='car_make' id='id_car_make' class='form-control col-4 offset-4 mb-1'></select>
-		<label for='id_car_model' class='form-label col col-4 offset-4'>Model</label>
-		<select name='car_model' id='id_car_model' class='form-control col-4 offset-4 mb-1'></select>
-		<label for='id_car_model_trim' class='form-label col col-4 offset-4'>Trim</label>
-		<select name='car_model_trim' id='id_car_model_trim' class='form-control col-4 offset-4 mb-1'></select>
-		<label for='id_car_color' class='form-label col col-4 offset-4'>Color</label>
-		<select name='car_color' id='id_car_color' class='form-control col-4 offset-4 mb-1'>
-			<option value='' selected disabled>---</option>
-			<option value='white'>White</option>
-			<option value='silver'>Silver</option>
-			<option value='grey'>Grey</option>
-			<option value='black'>Black</option>
-			<option value='red'>Red</option>
-			<option value='orange'>Orange</option>
-			<option value='yellow'>Yellow</option>
-			<option value='green'>Green</option>
-			<option value='blue'>Blue</option>
-			<option value='navy'>Navy</option>
-			<option value='purple'>Purple</option>
-		</select>
-
-		<label for='id_car_license' class='form-label col col-4 offset-4'>License plate #</label>
-		<input name='car_license' id='id_car_license' type='text' class='form-control col-4 offset-4 mb-1' />
-		<label for='id_loc_parking' class='form-label col col-4 offset-4'>Parking location</label>
-		<input name='loc_parking' id='id_loc_parking' type='text' class='form-control col-4 offset-4 mb-1' />
-		<input class='btn btn-success col-4 offset-4 my-1' type='submit' value='Submit' />
+		<div class='row my-2'>
+			<label for='id_car_year' class='form-label col-12'>Year</label>
+			<select name='car_year' id='id_car_year' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5'></select>
+		</div>
+		<div class='row my-2'>
+			<label for='id_car_make' class='form-label col-12'>Make</label>
+			<select name='car_make' id='id_car_make' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5'></select>
+		</div>
+		<div class='row my-2'>
+			<label for='id_car_model' class='form-label col-12'>Model</label>
+			<select name='car_model' id='id_car_model' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5'></select>
+		</div>
+		<div class='row my-2'>
+			<label for='id_car_model_trim' class='form-label col-12'>Trim</label>
+			<select name='car_model_trim' id='id_car_model_trim' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5'></select>
+		</div>
+		<div class='row my-2'>
+			<label for='id_car_color' class='form-label col-12'>Color</label>
+			<select name='car_color' id='id_car_color' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5'>
+				<option value='' selected disabled>---</option>
+				<option value='White'>White</option>
+				<option value='Silver'>Silver</option>
+				<option value='Grey'>Grey</option>
+				<option value='Black'>Black</option>
+				<option value='Red'>Red</option>
+				<option value='Orange'>Orange</option>
+				<option value='Yellow'>Yellow</option>
+				<option value='Green'>Green</option>
+				<option value='Blue'>Blue</option>
+				<option value='Navy'>Navy</option>
+				<option value='Purple'>Purple</option>
+			</select>
+		</div>
+		<div class='row my-2'>
+			<label for='id_car_license' class='form-label col-12'>License plate #</label>
+			<input name='car_license' id='id_car_license' type='text' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5' />
+		</div>
+		<div class='row my-2'>
+			<label for='id_loc_parking' class='form-label col-12'>Parking location</label>
+			<input name='loc_parking' id='id_loc_parking' type='text' class='form-control col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5' />
+		</div>
+		<div class='row my-4'>
+			<input class='btn btn-success col-4 offset-4' type='submit' value='Save' />
+		</div>
 	</form>
-	<div id='car-model-data'></div>
 {% endblock %}

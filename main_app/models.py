@@ -67,6 +67,14 @@ class Car(models.Model):
 
     def __str__(self):
         return str(self.owner.first_name) + '\'s ' + str(self.car_year) + ' ' + str(self.car_make) + ' ' + str(self.car_model)
+
+class Service(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.PROTECT, related_name='owner_car')
+    car = models.ForeignKey(Car, on_delete=models.PROTECT, related_name='car')
+    description = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.description
     
 class ShopOwner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
