@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h1>Request Service</h1>
+	<hr />
+	<form action="post_url/" method="post" class='form-group row'>
+		{% csrf_token %}
+		<label for='id_description' class='form-label col col-4 offset-4'>Description</label>
+		<select name='description' id='id_description' class='form-control col-4 offset-4 mb-1'></select>
+		<input class='btn btn-success col-4 offset-4 my-1' type='submit' value='Submit' />
+	</form>
+	<div id='car-model-data'></div>
+{% endblock %}

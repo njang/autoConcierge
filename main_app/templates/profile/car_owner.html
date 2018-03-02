@@ -12,14 +12,14 @@
     		<th>License plate</th>
     	</tr>
     {% for car in cars %}
-		<tr>
-			<td>{{ car.car_year }}</td>
+		<tr><a href='/'>
+			<td>{{ car.id }} {{ car.car_year }}</td>
 			<td>{{ car.car_make }}</td>
 			<td>{{ car.car_model }}</td>
 			<td>{{ car.car_model_trim }}</td>
 			<td>{{ car.car_color }}</td>
 			<td>{{ car.car_license }}</td>
-		</tr>
+		</a></tr>
 	{% endfor %}
 	</table>
 {% endblock %}

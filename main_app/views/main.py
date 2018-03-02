@@ -47,6 +47,10 @@ def add_car(request):
     path = '/' + str(request.user.id) + '/profile/'
     return HttpResponseRedirect(path)
 
+def show_car(request, car_id):
+    car = Car.objects.get(id=car_id)
+    return render(request, 'show_car.html', {'car': car})
+
 def error_404(request):
     data = {}
     return render(request,'404.html', data)
