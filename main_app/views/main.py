@@ -55,6 +55,10 @@ def show_car(request, car_id):
     car = Car.objects.get(id=car_id)
     return render(request, 'show_car.html', {'car': car})
 
+def edit_car(request, car_id):
+    car = Car.objects.get(id=car_id)
+    return render(request, 'show_car.html', {'car': car})
+
 def remove_car(request, car_id):
     Car.objects.get(id=car_id).delete()
     path = '/' + str(request.user.id) + '/profile/'
