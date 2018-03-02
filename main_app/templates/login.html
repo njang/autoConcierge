@@ -3,13 +3,19 @@
 
 {% block content %}
 <h1>Login</h1>
-<form method='POST' action='.'>
+<form method='POST' action='.' class='form-group'>
 	{% csrf_token %}
-
-	<p><label for='id_email'>Email</label> <input type='text' name='email' maxlength='254' required='' id='id_email'></p>
-	<p><label for='id_password'>Password</label> <input type='password' name='password' required='' id='id_password'></p>
-
-	<input type='submit' value='Submit' class='btn btn-success'/>
+	<div class='row my-2'>
+		<label for='id_email' class='form-label col-12'>Email</label>
+		<input type='text' name='email' maxlength='254' required='' id='id_email' class='form-control col-6 offset-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5' />
+	</div>
+	<div class='row my-2'>
+		<label for='id_password' class='form-label col-12'>Password</label>
+		<input type='password' name='password' required='' id='id_password' class='form-control col-6 offset-3 col-md-4 offset-md-4 col-lg-2 offset-lg-5'/>
+	</div>
+	<div class='row my-2'>
+		<input type='submit' value='Submit' class='btn btn-success col-4 offset-4 col-md-2 offset-md-5' />
+	</div>
 </form>
 
 {% endblock %}
