@@ -7,7 +7,7 @@
     <div class='row'>
 	    <button class='btn btn-success col col-md-2 col-sm-6 offset-md-5 offset-sm-3 my-2'>Schedule Service</button>
 	    <button class='btn btn-primary col col-md-2 col-sm-6 offset-md-5 offset-sm-3 my-2'>Edit Info</button>
-	    <button class='btn btn-danger col col-md-2 col-sm-6 offset-md-5 offset-sm-3 my-2'>Remove Car</button>
+	    <a href='/car/{{ car.id }}/remove/'><button class='btn btn-danger col col-md-2 col-sm-6 offset-md-5 offset-sm-3 my-2'>Remove Car</button></a>
     </div>
     <hr />
 {% endblock %}
