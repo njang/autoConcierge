@@ -2,12 +2,13 @@ from django import forms
 from django.db import transaction
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.views.generic.edit import UpdateView
-from .models import User, CarOwner, ShopOwner, ServiceDriver, Car
+from .models import User, CarOwner, ShopOwner, ServiceDriver, Car, Service
 
+# from phonenumber_field.modelfields import PhoneNumberField
 from django.http import HttpResponseRedirect
 import requests
 
-GOOGLE_MAPS_API_URL = 'http://maps.googleapis.com/maps/api/geocode/json'
+GOOGLE_MAPS_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json'
 
 class LoginForm(forms.Form):
     email = forms.CharField(label="Email", max_length=254)
@@ -68,7 +69,7 @@ class ShopOwnerSignUpForm(UserCreationForm):
     address_street = forms.CharField(label='Address',max_length=100)
     address_gps_lat = forms.DecimalField(label='address_gps_lat', max_digits=10, decimal_places=6)
     address_gps_lng = forms.DecimalField(label='address_gps_lng', max_digits=10, decimal_places=6)
-
+    phone_number = forms.CharField(label='Phone number',max_length=100)
     class Meta(UserCreationForm.Meta):
         model = User
 
@@ -80,7 +81,7 @@ class ShopOwnerSignUpForm(UserCreationForm):
         shop_owner = ShopOwner.objects.create(user=user)
         shop_owner.shop_name = self.cleaned_data.get('shop_name')
         shop_owner.address_street = self.cleaned_data.get('address_street')
-
+        shop_owner.phone_number = self.cleaned_data.get('phone_number')
         # Prepare for Google Maps geocode API
         params = {
             'address': self.cleaned_data.get('address_street'),
@@ -100,6 +101,16 @@ class ShopOwnerSignUpForm(UserCreationForm):
         shop_owner.address_gps_lng = result['geometry']['location']['lng']
         shop_owner.save()
         return user
+
+class EditShopForm(forms.ModelForm):
+    class Meta:
+        model = ShopOwner
+        fields = ('shop_name', 'address_street', 'phone_number')
+
+class PostRequestForm(forms.ModelForm):
+    class Meta:
+        model = Service
+        fields = ('description', 'date', 'shop')
 
 def update_address(request):
     form = AddressForm(request.POST)

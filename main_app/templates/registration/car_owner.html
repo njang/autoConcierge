@@ -1,39 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Signup for Car Owners </h1>
+    <h2>Signup for Car Owners</h2>
 	<form method='post' novalidate='' class='form-group'>
 		{% csrf_token %}
 		<input type='hidden' name='next' value=''>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_email' class='form-label col-12'>Email address</label> 
 			<input type='email' name='email' required maxlength='254' id='id_email' class='col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 form-control'>
 		</div>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_first_name' class='form-label col-12'>First name</label> 
 			<input type='text' name='first_name' maxlength='30' id='id_first_name' class='col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 form-control'>
 		</div>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_last_name' class='form-label col-12'>Last name</label> 
 			<input type='text' name='last_name' maxlength='150' id='id_last_name' class='col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 form-control'>
 		</div>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_password1' class='form-label col-12'>Password</label> 
 			<input type='password' name='password1' required id='id_password1' class='col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 form-control'>
 		</div>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_password2' class='form-label col-12'>Re-type Password</label> 
 			<input type='password' name='password2' required id='id_password2' class='col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 form-control'>
 		</div>
-		<div class='row my-2'>
+		<div class='my-2'>
 			<label for='id_loc_office' class='form-label col-12'>Office location</label> 
 			<input type='text' name='loc_office' required maxlength='100' id='id_loc_office' class='col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 form-control'>
 		</div>
-		<div class='row my-2'>
-			<button type='submit' class='btn btn-primary col-4 offset-4 col-md-2 offset-md-5'>Sign up</button>
+		<div class='my-2'>
+			<button type='submit' class='btn btn-primary col-4 col-md-2'>Sign up</button>
 		</div>
 	</form>
-	<div class='row my-2'>
-		<a href='/signup' class='btn btn-secondary col-4 offset-4 col-md-2 offset-md-5'>Cancel</a>
+	<div class='my-2'>
+		<a href='/signup' class='btn btn-secondary col-4 col-md-2'>Cancel</a>
 	</div>		
 {% endblock %}

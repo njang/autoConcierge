@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Edit Shop Information</h2>
+    <form method='post' novalidate='' class='form-group'>
+		{% csrf_token %}
+		<input type='hidden' name='next' value=''>
+		<div class='my-2'>
+			<label for='id_shop_name' class='form-label col-12'>Shop Name</label> 
+			<input type='text' name='shop_name' required maxlength='100' id='id_shop_name' class='col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 form-control' value='{{ shop.shop_name }}'>
+		</div>
+		<div class='my-2'>
+			<label for='id_address_street' class='form-label col-12'>Address</label> 
+			<input type='text' name='address_street' required maxlength='100' id='id_address_street' class='col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 form-control' value='{{ shop.address_street}}'>
+		</div>
+		<div class='my-2'>
+			<label for='id_phone_number' class='form-label col-12'>Phone Number</label> 
+			<input type='text' name='phone_number' required maxlength='100' id='id_phone_number' class='col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 form-control' value='{{ shop.phone_number }}'>
+		</div>
+		<div class='my-2'>
+			<label for='id_address_gps_lat' class='col col-2 offset-3' hidden>address_gps_lat</label> 			
+			<input type='number' name='address_gps_lat' maxlength='100' id='id_address_gps_lat' class='col col-3 form-control' value='0' hidden>
+		</div>
+		<div class='my-2'>
+			<label for='id_address_gps_lng' class='col col-2 offset-3' hidden>address_gps_lng</label> 			
+			<input type='number' name='address_gps_lng' maxlength='100' id='id_address_gps_lng' class='col col-3 form-control' value='0' hidden>
+		</div>
+		<div class='my-2'>
+			<a href='update' class='btn btn-primary col-4 col-md-2'>Update</a>
+		</div>
+	</form>
+	<div class='my-2'>
+		<a href='/{{user.id}}/profile' class='btn btn-secondary col-4 col-md-2'>Cancel</a>
+	</div>			
+{% endblock %}

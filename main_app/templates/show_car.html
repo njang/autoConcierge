@@ -1,13 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Show car</h1>
-    <div>{{ car.car_year }} {{ car.car_make }} {{ car.car_model }}</div>
-    <div>{{ car.car_color }}</div>
-    <div>{{ car.car_license }}</div>
-    <div class='row'>
-	    <button class='btn btn-success col col-md-2 col-sm-6 offset-md-5 offset-sm-3 my-2'>Schedule Service</button>
-	    <a href='edit' class='btn btn-primary col col-md-2 col-sm-6 offset-md-5 offset-sm-3 my-2'>Edit Info</a>
-        <a href='remove' class='btn btn-danger col col-md-2 col-sm-6 offset-md-5 offset-sm-3 my-2'>Remove Car</a>
+    <h4 class='my-2'>{{ car.car_year }} {{ car.car_make }} {{ car.car_model }}</h4>
+    <div class='my-1'>
+        <span class='col-9 h5 text-left'>Color: {{ car.car_color }}</span>
     </div>
-    <hr />
+    <div class='my-1'>
+        <span class='col-9 h5 text-left'>License Plate No.: {{ car.car_license }} </span>
+    </div>
+    <div class='my-2'>
+	    <a class='btn btn-success col-6 col-sm-4 col-lg-2' href='service'>Schedule Service</a>
+    </div>
+    <div class='my-2'>
+	    <a href='edit' class='btn btn-info col-6 col-sm-4 col-lg-2'>Edit Info</a>
+    </div>
+    <div class='my-2'>
+        <button type='button' class='btn btn-danger col-6 col-sm-4 col-lg-2' data-toggle='modal' data-target='#modalConfirmRemove'>Remove Car</button>
+    </div>
+    {% comment %}
+    <div class='my-2'>
+        <a class='btn btn-light col-6 col-sm-4 col-lg-2' href='/{{user.id}}/profile'>Go back</a>
+    </div>
+    {% endcomment %}
+
+    <!-- Confirmation Modal -->
+    <div id='modalConfirmRemove' class='modal fade text-dark' role='dialog'>
+        <div class='modal-dialog'>
+            <!-- Modal content-->
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h4 class='modal-title'>{{ car.car_year }} {{ car.car_make }} {{ car.car_model }}</h4>
+                    <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                </div>
+                <div class='modal-body'>
+                    <p>Are you sure to remove this car?</p>
+                </div>
+                    <div class='modal-footer'>
+                    <a href='remove' class='btn btn-danger'>Remove</a>
+                    <button type='button' class='btn btn-basic' data-dismiss='modal'>Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

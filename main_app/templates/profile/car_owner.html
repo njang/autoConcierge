@@ -1,8 +1,10 @@
 {% block content %}
-    <div class='row'>
-        {% for car in cars %}
-        <a class='btn btn-basic col col-4 offset-4 my-1 bg-light text-black' href='/car/{{car.id}}'>{{ car.car_year }} {{ car.car_make }} {{ car.car_model }}</a>
-       {% endfor %}
+    {% for car in cars %}
+    <div class='my-2'>
+    	<a class='btn btn-basic col-10 col-sm-8 col-md-6 col-lg-4 my-1 bg-light text-black' href='/car/{{car.id}}'>{{ car.car_year }} {{ car.car_make }} {{ car.car_model }}</a>
     </div>
-    <a href='/car/add' class='btn btn-primary'>Add car</a>
+   {% endfor %}
+    <div class='my-2'>
+    	<a href='/car/add' class='btn btn-primary'>Add car</a>
+	</div>
 {% endblock %}

@@ -3,11 +3,31 @@
 {% block content %}
 <header class='bg-secondary text-black py-3'>
     {% if user.is_authenticated %}
-        <a href='/{{ user.id }}/profile'>Hello, {{ user.first_name }}!</a>
-        <a href='/logout'><button class='btn btn-basic'>Logout</button></a>
+        <a href='/{{ user.id }}/profile' class='btn btn-info'>Home</a>
+        <button class='btn btn-dark' data-toggle='modal' data-target='#modalConfirmLogout'>Logout</button>
     {% else %}
         <a href='/login'><button class='btn btn-basic'>Login</button></a>
         <a href='/signup'><button class='btn btn-basic'>Signup</button></a>
     {% endif %}
+    <!-- Confirmation Modal -->
+    <div id='modalConfirmLogout' class='modal fade text-dark' role='dialog'>
+        <div class='modal-dialog'>
+            <!-- Modal content-->
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h4 class='modal-title'>Logout</h4>
+                    <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                </div>
+                <div class='modal-body'>
+                    <p>Are you sure to log out?</p>
+                </div>
+                    <div class='modal-footer'>
+                    <a href='/logout' class='btn btn-primary'>Logout</a>
+                    <button type='button' class='btn btn-basic' data-dismiss='modal'>Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </header>
 {% endblock %}
