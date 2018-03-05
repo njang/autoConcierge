@@ -15,7 +15,7 @@ python_version = "3.6"
 dj-database-url = "==0.4.2"
 django = "==2.0"
 gunicorn = "==19.7.1"
-"psycopg2" = "==2.7.3.2"
+"psycopg2" = "*"
 whitenoise = "==3.3.1"
 
 
